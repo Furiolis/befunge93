@@ -248,8 +248,14 @@ def interpret(code):
             break
     return output
 
-# print(interpret(">987v>.v\nv456<  :\n>321 ^ _@"))
-# print(interpret('>25*"!dlroW olleH":v\n                v:,_@\n                >  ^'))
-# print(interpret('08>:1-:v v *_$.@\n  ^    _$>\:^'))
-# (interpret('01->1# +# :# 0# g# ,# :# 5# 8# *# 4# +# -# _@'))
-# print(interpret('2>:3g" "-!v\\  g30          <\n |!`"&":+1_:.:03p>03g+:"&"`|\n @               ^  p3\\" ":<\n2 2345678901234567890123456789012345678'))
+
+def test_intepreter():
+    codes_and_outputs = [
+        ['>987v>.v\nv456<  :\n>321 ^ _@', '123456789'],
+        ['>25*"!dlroW olleH":v\n                v:,_@\n                >  ^]', 'Hello World!\n'],
+        ['08>:1-:v v *_$.@\n  ^    _$>\\:^', '40320'],
+        ['01->1# +# :# 0# g# ,# :# 5# 8# *# 4# +# -# _@', '01->1# +# :# 0# g# ,# :# 5# 8# *# 4# +# -# _@'],
+        ['2>:3g" "-!v\\  g30          <\n |!`"&":+1_:.:03p>03g+:"&"`|\n @               ^  p3\\" ":<\n2'
+         ' 2345678901234567890123456789012345678', '23571113171923293137']]
+    for code, output in codes_and_outputs:
+        assert interpret(code) == output
